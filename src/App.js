@@ -1,3 +1,10 @@
+import styled from "styled-components";
+
+const BasicStyles = styled.h1`
+  text-align: center;
+  text-transform: capitalize;
+`;
+
 function App() {
   return (
     <div
@@ -5,7 +12,7 @@ function App() {
         padding: "2rem",
       }}
     >
-      <h1 className="title">Styled components</h1>
+      <BasicStyles>Styled components</BasicStyles>
       <button className="btn">Click Me</button>
       <div>
         <h2 className="title">hello world</h2>

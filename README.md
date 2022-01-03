@@ -143,3 +143,49 @@ output
 
 to solve the problem we have to come up with different class names.
 it can get very complicated and harder to track in a large project.
+
+## how to use styled component
+
+### snippets
+
+imports
+
+![styled-component-snippets](./documentation/images/styled-compoennt-snippents.png)
+creation
+![styled-component-snippets](./documentation/images/creation.png)
+props and misc
+
+![styled-component-snippets](./documentation/images/props.png)
+
+let's add the first component to the application.
+
+```jsx
+import styled from "styled-components";
+
+const BasicStyles = styled.h1`
+  text-align: center;
+  text-transform: capitalize;
+`;
+
+function App() {
+  return (
+    <div
+      style={{
+        padding: "2rem",
+      }}
+    >
+      <BasicStyles>Styled components</BasicStyles>
+      <button className="btn">Click Me</button>
+      <div>
+        <h2 className="title">hello world</h2>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+by doing so we eliminate both issues we can reuse it any where.
+basic styles component can be used in components.
