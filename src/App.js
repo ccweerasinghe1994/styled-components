@@ -1,9 +1,10 @@
-import styled from "styled-components";
-
-const BasicStyles = styled.h1`
-  text-align: center;
-  text-transform: capitalize;
-`;
+import { BasicStyles } from "./components/basic-title/basic-title";
+import Button from "@mui/material/Button";
+import {
+  DefaultButton,
+  HipsterButton,
+  StyledButtonMUI,
+} from "./components/default-button/default-button";
 
 function App() {
   return (
@@ -12,11 +13,16 @@ function App() {
         padding: "2rem",
       }}
     >
+      <BasicStyles special>Styled components</BasicStyles>
       <BasicStyles>Styled components</BasicStyles>
-      <button className="btn">Click Me</button>
-      <div>
-        <h2 className="title">hello world</h2>
-      </div>
+      <DefaultButton>click me</DefaultButton>
+      <HipsterButton>click me</HipsterButton>
+      <Button variant="contained">Default MUI button</Button>
+      <br />
+      <br />
+      <StyledButtonMUI variant="contained">
+        extended styled button
+      </StyledButtonMUI>
     </div>
   );
 }
