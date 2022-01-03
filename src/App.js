@@ -1,11 +1,12 @@
-
-
-
 function App() {
   return (
-    <div className="App">
-
-     <h1>Styled components</h1>
+    <div
+      style={{
+        padding: "2rem",
+      }}
+    >
+      <h1 className="title">Styled components</h1>
+      <button className="btn">Click Me</button>
     </div>
   );
 }
