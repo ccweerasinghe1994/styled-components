@@ -12,6 +12,10 @@ body {
   text-transform: capitalize;
 }
 
+.title {
+  color: red;
+}
+
 .btn {
   background: #645cff;
   color: #fff;

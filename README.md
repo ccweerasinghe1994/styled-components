@@ -44,9 +44,9 @@ let's add some global styles.
 ```css
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -68,9 +68,78 @@ body {
   width: 200px;
   margin: 1rem auto;
 }
-
-
 ```
+
 output
 ![home-page-1.png](./documentation/images/home-page-1.png)
 
+to reuse a in-line style
+we have to copy paste the styles to a component
+
+```jsx
+function App() {
+  return (
+    <div
+      style={{
+        padding: "2rem",
+      }}
+    >
+      <h1 className="title">Styled components</h1>
+      <button className="btn">Click Me</button>
+      <div>
+        <h2
+          style={{
+            padding: "2rem",
+          }}
+        >
+          hello world
+        </h2>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+what if you want to use global css
+problem is with that is we cant use the "title" class name to style different element
+
+```jsx
+function App() {
+  return (
+    <div
+      style={{
+        padding: "2rem",
+      }}
+    >
+      <h1 className="title">Styled components</h1>
+      <button className="btn">Click Me</button>
+      <div>
+        <h2 className="title">hello world</h2>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+example
+
+```css
+.title {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.title {
+  color: red;
+}
+```
+
+output
+![home-page-1.png](./documentation/images/class.png)
+
+to solve the problem we have to come up with different class names.
+it can get very complicated and harder to track in a large project.
