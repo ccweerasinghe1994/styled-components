@@ -6,6 +6,26 @@
   - [passing props](#passing-props)
     - [extending css](#extending-css)
     - [extending React component](#extending-react-component)
+    - [complex components](#complex-components)
+    - [CSS Variables](#css-variables)
+    - [018 Utils Approach](#018-utils-approach)
+    - [019 Custom Border Example](#019-custom-border-example)
+    - [020 Card - Setup](#020-card---setup)
+    - [021 Card - Style Container](#021-card---style-container)
+    - [022 Card - Nesting](#022-card---nesting)
+    - [023 Card - Media Queries, Hover and Pseudo Elements](#023-card---media-queries-hover-and-pseudo-elements)
+    - [024 Global Styles](#024-global-styles)
+    - [025 Theming](#025-theming)
+    - [026 Animations](#026-animations)
+    - [027 'AS' Prop](#027-as-prop)
+    - [028 Macro and 'CSS' Prop](#028-macro-and-css-prop)
+    - [029 CSS Helper Function](#029-css-helper-function)
+    - [030 Form Setup](#030-form-setup)
+    - [031 ATTRS - Button Example](#031-attrs---button-example)
+    - [032 Submit Button Styles](#032-submit-button-styles)
+    - [033 ATTRS - Input Example](#033-attrs---input-example)
+    - [034 More Complex Props - List Example](#034-more-complex-props---list-example)
+    - [035 More Complex Props - Products Example](#035-more-complex-props---products-example)
 
 # styled-components
 
@@ -349,15 +369,184 @@ export const StyledButtonMUI = styled(Button)`
       </StyledButtonMUI>
 ```
 
-![styled-component-snippets](./documentation/images/extending-extending-react-component.png)
+![styled-component-snippets](./documentation/images/extending-react-component.png)
 
 
+### complex components
+
+complex component
+
+```jsx
+import React from "react";
+import styled from "styled-components";
+const ComplexTitle = ({ title }) => {
+  return (
+    <Wrapper>
+      <h1>{title}</h1>
+      <div className="underline"></div>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .underline {
+    width: 5rem;
+    height: 0.25rem;
+    background-color: #645cff;
+    margin: 0 auto;
+  }
+`;
+
+export default ComplexTitle;
+
+```
+
+use it in home component
+
+```jsx
+import ComplexTitle from "./components/complex-title/complex-title";
+
+function App() {
+  return (
+    <div
+      style={{
+        padding: "2rem",
+      }}
+    >
+      <ComplexTitle title={"more complex title"} />
+    </div>
+  );
+}
+
+export default App;
+
+```
+![styled-component-snippets](./documentation/images/complex-component.png)
 
 
-![styled-component-snippets](./documentation/images/props.png)
-![styled-component-snippets](./documentation/images/props.png)
-![styled-component-snippets](./documentation/images/props.png)
-![styled-component-snippets](./documentation/images/props.png)
+here we can use simple class names because these class names are only applied to this specific component.
+
+let's explore it more.
+
+let's create a random component.
+
+```jsx
+import React from "react";
+import styled from "styled-components";
+const Random = () => {
+  return (
+    <Wrapper>
+      <div className="underline"></div>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  .underline {
+    width: 5rem;
+    height: 0.25rem;
+    background-color: rgb(255, 184, 92);
+    margin: 4rem auto;
+  }
+`;
+
+export default Random;
+
+
+```
+here we are using the underline class name again but it is not overriding the above component.
+![styled-component-snippets](./documentation/images/complex-example-2.png)
+
+sll the styles in your global css files can be applied as normal with styled component.
+but you can override those classes in you styled component.
+
+### CSS Variables
+let's go to our ```index.css``` file and 
+```css
+:root {
+  --primary: #645cff;
+}
+```
+
+then use it in our ```complex component```
+
+````jsx
+import React from "react";
+import styled from "styled-components";
+const ComplexTitle = ({ title }) => {
+  return (
+    <Wrapper>
+      <h1>{title}</h1>
+      <div className="underline"></div>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .underline {
+    width: 5rem;
+    height: 0.25rem;
+    background-color: var(--primary);
+    margin: 0 auto;
+  }
+`;
+
+export default ComplexTitle;
+
+
+```
+### 018 Utils Approach
+
+### 019 Custom Border Example 
+### 020 Card - Setup
+### 021 Card - Style Container
+### 022 Card - Nesting
+### 023 Card - Media Queries, Hover and Pseudo Elements
+### 024 Global Styles
+### 025 Theming
+### 026 Animations
+### 027 'AS' Prop
+### 028 Macro and 'CSS' Prop
+### 029 CSS Helper Function
+### 030 Form Setup
+### 031 ATTRS - Button Example
+### 032 Submit Button Styles
+### 033 ATTRS - Input Example
+### 034 More Complex Props - List Example
+### 035 More Complex Props - Products Example
+
+
 ```jsx```
+
+![styled-component-snippets](./documentation/images/)
 ```jsx```
+
+![styled-component-snippets](./documentation/images/)
 ```jsx```
+
+![styled-component-snippets](./documentation/images/)
+```jsx```
+
+![styled-component-snippets](./documentation/images/)
+```jsx```
+
+![styled-component-snippets](./documentation/images/)
+```jsx```
+
+![styled-component-snippets](./documentation/images/)
+```jsx```
+
+![styled-component-snippets](./documentation/images/)
+```jsx```
+
+
