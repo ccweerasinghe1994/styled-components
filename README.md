@@ -8,24 +8,23 @@
     - [extending React component](#extending-react-component)
     - [complex components](#complex-components)
     - [CSS Variables](#css-variables)
-    - [018 Utils Approach](#018-utils-approach)
-    - [019 Custom Border Example](#019-custom-border-example)
-    - [020 Card - Setup](#020-card---setup)
-    - [021 Card - Style Container](#021-card---style-container)
-    - [022 Card - Nesting](#022-card---nesting)
-    - [023 Card - Media Queries, Hover and Pseudo Elements](#023-card---media-queries-hover-and-pseudo-elements)
-    - [024 Global Styles](#024-global-styles)
-    - [025 Theming](#025-theming)
-    - [026 Animations](#026-animations)
-    - [027 'AS' Prop](#027-as-prop)
-    - [028 Macro and 'CSS' Prop](#028-macro-and-css-prop)
-    - [029 CSS Helper Function](#029-css-helper-function)
-    - [030 Form Setup](#030-form-setup)
-    - [031 ATTRS - Button Example](#031-attrs---button-example)
-    - [032 Submit Button Styles](#032-submit-button-styles)
-    - [033 ATTRS - Input Example](#033-attrs---input-example)
-    - [034 More Complex Props - List Example](#034-more-complex-props---list-example)
-    - [035 More Complex Props - Products Example](#035-more-complex-props---products-example)
+    - [Utils Approach](#utils-approach)
+    - [Custom Border Example](#custom-border-example)
+    - [Card - Setup](#card---setup)
+    - [Card - Style Container](#card---style-container)
+    - [Card - Nesting](#card---nesting)
+    - [Card - Media Queries, Hover and Pseudo Elements](#card---media-queries-hover-and-pseudo-elements)
+    - [Global Styles](#global-styles)
+    - [Theming](#theming)
+    - [Animations](#animations)
+    - ['AS' Prop](#as-prop)
+    - [Macro and 'CSS' Prop](#macro-and-css-prop)
+    - [CSS Helper Function](#css-helper-function)
+    - [Form Setup](#form-setup)
+    - [Submit Button Styles](#submit-button-styles)
+    - [ATTRS - Input Example](#attrs---input-example)
+    - [More Complex Props - List Example](#more-complex-props---list-example)
+    - [More Complex Props - Products Example](#more-complex-props---products-example)
 
 # styled-components
 
@@ -475,7 +474,7 @@ let's go to our ```index.css``` file and
 
 then use it in our ```complex component```
 
-````jsx
+```jsx
 import React from "react";
 import styled from "styled-components";
 const ComplexTitle = ({ title }) => {
@@ -505,48 +504,126 @@ export default ComplexTitle;
 
 
 ```
-### 018 Utils Approach
-
-### 019 Custom Border Example 
-### 020 Card - Setup
-### 021 Card - Style Container
-### 022 Card - Nesting
-### 023 Card - Media Queries, Hover and Pseudo Elements
-### 024 Global Styles
-### 025 Theming
-### 026 Animations
-### 027 'AS' Prop
-### 028 Macro and 'CSS' Prop
-### 029 CSS Helper Function
-### 030 Form Setup
-### 031 ATTRS - Button Example
-### 032 Submit Button Styles
-### 033 ATTRS - Input Example
-### 034 More Complex Props - List Example
-### 035 More Complex Props - Products Example
 
 
+
+### Utils Approach
+
+instead of using global css we can use ```js file``` to store variables.
+
+let's create a ``` utils.js ``` file
+
+```js
+export const colors = {
+    primary:"#645cff"
+}
+
+```
+
+
+```jsx
+
+import React from "react";
+import styled from "styled-components";
+import { colors } from "../../utils";
+const AlternativeTitle = ({ title }) => {
+  return (
+    <Wrapper>
+      <h1>{title}</h1>
+      <div className="underline"></div>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .underline {
+    width: 5rem;
+    height: 0.25rem;
+    background-color: ${colors.primary};
+    margin: 0 auto;
+  }
+`;
+
+export default AlternativeTitle;
+
+
+
+
+```
+output
+
+![utils image](./documentation/images/utils.png)
+
+
+
+
+
+
+###  Custom Border Example 
+![styled-component-snippets](./documentation/images/)
 ```jsx```
 
+
+###  Card - Setup
+![styled-component-snippets](./documentation/images/)
+```jsx```
+
+###  Card - Style Container
+![styled-component-snippets](./documentation/images/)
+```jsx```
+
+###  Card - Nesting
+![styled-component-snippets](./documentation/images/)
+```jsx```
+
+###  Card - Media Queries, Hover and Pseudo Elements
 ![styled-component-snippets](./documentation/images/)
 ```jsx```
 
 ![styled-component-snippets](./documentation/images/)
 ```jsx```
 
+###  Global Styles
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  Theming
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  Animations
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  'AS' Prop
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  Macro and 'CSS' Prop
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  CSS Helper Function
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  Form Setup
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###1 ATTRS - Button Example
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  Submit Button Styles
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  ATTRS - Input Example
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  More Complex Props - List Example
+![styled-component-snippets](./documentation/images/)
+```jsx```
+###  More Complex Props - Products Example
 ![styled-component-snippets](./documentation/images/)
 ```jsx```
 
-![styled-component-snippets](./documentation/images/)
-```jsx```
-
-![styled-component-snippets](./documentation/images/)
-```jsx```
-
-![styled-component-snippets](./documentation/images/)
-```jsx```
-
-![styled-component-snippets](./documentation/images/)
-```jsx```
 
 
