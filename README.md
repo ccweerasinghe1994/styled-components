@@ -16,9 +16,7 @@
     - [Animations](#animations)
     - ['AS' Prop](#as-prop)
     - [CSS Helper Function](#css-helper-function)
-    - [Form Setup](#form-setup)
-    - [Submit Button Styles](#submit-button-styles)
-    - [ATTRS - Input Example](#attrs---input-example)
+    - [Form Setup / ATTRS - Input Example / Submit Button Styles / ATTRS - Button Example](#form-setup--attrs---input-example--submit-button-styles--attrs---button-example)
     - [More Complex Props - List Example](#more-complex-props---list-example)
     - [More Complex Props - Products Example](#more-complex-props---products-example)
 
@@ -1042,22 +1040,166 @@ export default App;
 
 output
 ![css-helper](./documentation/images/css-helper.png)
-```jsx```
-###  Form Setup
-![styled-component-snippets](./documentation/images/)
-```jsx```
-###1 ATTRS - Button Example
-![styled-component-snippets](./documentation/images/)
-```jsx```
-###  Submit Button Styles
-![styled-component-snippets](./documentation/images/)
-```jsx```
-###  ATTRS - Input Example
-![styled-component-snippets](./documentation/images/)
-```jsx```
+
+###  Form Setup / ATTRS - Input Example / Submit Button Styles / ATTRS - Button Example
+let's create a form component.
+here we are using attr function to pass attribute.
+
+```jsx
+
+import styled, { css } from "styled-components";
+import React from "react";
+import { DefaultButton } from "../default-button/default-button";
+
+const Form = () => {
+  return (
+    <Wrapper>
+      <h2>some random stuff</h2>
+      <Button>click me</Button>
+      <form>
+        <h2>Form</h2>
+        <Input type="text" />
+        <Input type="email" placeholder={"email"} />
+        <Input type="password" />
+        <Input type="text" />
+        <Button type={"submit"}>submit here</Button>
+      </form>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  form {
+    width: 300px;
+    background-color: #bebebe29;
+    padding: 2rem;
+    margin-top: 1rem;
+  }
+`;
+
+const Button = styled.button.attrs((props) => {
+  return {
+    type: props.type || "button",
+  };
+})`
+  background-color: var(--primary);
+  border: none;
+  padding: 0.25rem;
+  color: #fff;
+  cursor: pointer;
+  ${({ type }) => {
+    return (
+      type === "submit" &&
+      css`
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        border-radius: 0.25rem;
+      `
+    );
+  }}
+`;
+
+const Input = styled.input.attrs((props) => {
+  return {
+    type: props.type || "text",
+    placeholder: props.placeholder || "enter a value here",
+  };
+})`
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.25rem;
+  border: 2px solid #d9dce0;
+  margin-top: 1rem;
+`;
+export default Form;
+
+```
+![styled-component-snippets](./documentation/images/form.png)
+
+
 ###  More Complex Props - List Example
-![styled-component-snippets](./documentation/images/)
-```jsx```
+
+```jsx
+import styled, { css } from "styled-components";
+import React from "react";
+
+const fruits = ["apples", "banana", "orange", "peach"];
+
+const Item = styled.li`
+  list-style-type: none;
+  ${(props) => {
+    if (props.odd) {
+      return css`
+        color: red;
+        background-color: antiquewhite;
+      `;
+    } else {
+      return css`
+        color: blue;
+        background-color: aquamarine;
+      `;
+    }
+  }}
+`;
+
+const List = () => {
+  return (
+    <ul>
+      {fruits.map((item, index) => (
+        <Item odd={(index + 1) % 2 !== 0} key={index}>
+          {item}
+        </Item>
+      ))}
+    </ul>
+  );
+};
+
+export default List;
+
+
+```
+![styled-component-snippets](./documentation/images/advanced-props.png);
+
+```jsx
+import styled, { css } from "styled-components";
+import React from "react";
+
+const fruits = ["apples", "banana", "orange", "peach"];
+
+const Item = styled.li`
+  list-style-type: none;
+  ${(props) => {
+    if (props.odd) {
+      return css`
+        color: red;
+        background-color: antiquewhite;
+      `;
+    } else {
+      return css`
+        color: blue;
+        background-color: aquamarine;
+      `;
+    }
+  }}
+`;
+
+const List = () => {
+  return (
+    <ul>
+      {fruits.map((item, index) => (
+        <Item odd={(index + 1) % 2 !== 0} key={index}>
+          {item}
+        </Item>
+      ))}
+    </ul>
+  );
+};
+
+export default List;
+
+
+```
 ###  More Complex Props - Products Example
 ![styled-component-snippets](./documentation/images/)
 ```jsx```

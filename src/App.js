@@ -1,16 +1,11 @@
-import {
-  DefaultButton,
-  HipsterButton,
-} from "./components/default-button/default-button";
 import GlobalStyles from "./global-styles";
-import styled from "styled-components/macro";
+import List from "./components/list/list";
 
 function App() {
   return (
     <div style={{ padding: "2rem" }}>
       <GlobalStyles />
-      <DefaultButton>Click Me</DefaultButton>
-      <DefaultButton large>Large Button</DefaultButton>
+      <List />
     </div>
   );
 }
