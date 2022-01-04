@@ -15,7 +15,6 @@
     - [Theming](#theming)
     - [Animations](#animations)
     - ['AS' Prop](#as-prop)
-    - [Macro and 'CSS' Prop](#macro-and-css-prop)
     - [CSS Helper Function](#css-helper-function)
     - [Form Setup](#form-setup)
     - [Submit Button Styles](#submit-button-styles)
@@ -965,11 +964,84 @@ export default App;
 ```
 
 ![styled-component-snippets](./documentation/images/as-prop.png)
-###  Macro and 'CSS' Prop
-![styled-component-snippets](./documentation/images/)
-```jsx```
+
 ###  CSS Helper Function
-![styled-component-snippets](./documentation/images/)
+let's create a large button.
+```jsx
+import styled, { css } from "styled-components";
+import Button from "@mui/material/Button";
+
+export const DefaultButton = styled.button`
+  background: #645cff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  ${(props) =>
+    props.large
+      ? css`
+          padding: 1rem;
+          font-size: 1.5rem;
+          font-weight: 700;
+        `
+      : css`
+          padding: 0.5rem;
+          font-size: 1rem;
+          font-weight: 500;
+        `}
+  display: block;
+  width: 200px;
+  margin: 1rem auto;
+`;
+
+//  overriding default button styles
+
+export const HipsterButton = styled(DefaultButton)`
+  width: clamp(100px, 150px, 200px);
+  background-color: transparent;
+  color: #645cff;
+  border: 1px solid #645cff;
+  padding: 1rem;
+  display: inline-block;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+`;
+
+// extending a react component
+
+export const StyledButtonMUI = styled(Button)`
+  text-transform: lowercase;
+`;
+
+```
+and parse the large prop from **app.js**
+```jsx
+import {
+  DefaultButton,
+  HipsterButton,
+} from "./components/default-button/default-button";
+import GlobalStyles from "./global-styles";
+import styled from "styled-components/macro";
+
+function App() {
+  return (
+    <div style={{ padding: "2rem" }}>
+      <GlobalStyles />
+      <DefaultButton>Click Me</DefaultButton>
+      <DefaultButton large>Large Button</DefaultButton>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+output
+![css-helper](./documentation/images/css-helper.png)
 ```jsx```
 ###  Form Setup
 ![styled-component-snippets](./documentation/images/)

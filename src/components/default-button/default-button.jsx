@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Button from "@mui/material/Button";
 
 export const DefaultButton = styled.button`
@@ -8,7 +8,18 @@ export const DefaultButton = styled.button`
   border-radius: 0.25rem;
   cursor: pointer;
   text-transform: capitalize;
-  padding: 0.25rem;
+  ${(props) =>
+    props.large
+      ? css`
+          padding: 1rem;
+          font-size: 1.5rem;
+          font-weight: 700;
+        `
+      : css`
+          padding: 0.5rem;
+          font-size: 1rem;
+          font-weight: 500;
+        `}
   display: block;
   width: 200px;
   margin: 1rem auto;
