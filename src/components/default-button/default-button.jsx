@@ -17,10 +17,16 @@ export const DefaultButton = styled.button`
 //  overriding default button styles
 
 export const HipsterButton = styled(DefaultButton)`
-  width: 400px;
+  width: clamp(100px, 150px, 200px);
   background-color: transparent;
   color: #645cff;
   border: 1px solid #645cff;
+  padding: 1rem;
+  display: inline-block;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
 `;
 
 // extending a react component

@@ -879,8 +879,92 @@ export default App;
 ![styled-component-snippets](./documentation/images/spinner.png)
 
 ###  'AS' Prop
-![styled-component-snippets](./documentation/images/)
-```jsx```
+let's use as prop
+
+in our hipster component.
+```jsx
+import styled from "styled-components";
+import Button from "@mui/material/Button";
+
+export const DefaultButton = styled.button`
+  background: #645cff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: 0.25rem;
+  display: block;
+  width: 200px;
+  margin: 1rem auto;
+`;
+
+//  overriding default button styles
+
+export const HipsterButton = styled(DefaultButton)`
+  width: clamp(100px, 150px, 200px);
+  background-color: transparent;
+  color: #645cff;
+  border: 1px solid #645cff;
+  padding: 1rem;
+  display: inline-block;
+  margin-left: 1rem;
+  text-decoration: none;import { HipsterButton } from "./components/default-button/default-button";
+import GlobalStyles from "./global-styles";
+
+function App() {
+  return (
+    <div style={{ padding: "2rem" }}>
+      <GlobalStyles />
+      <HipsterButton>Click me</HipsterButton>
+      <HipsterButton>Click me</HipsterButton>
+      <HipsterButton as="a" href="https://www.google.com">
+        Click me
+      </HipsterButton>
+      <HipsterButton>Click me</HipsterButton>
+    </div>
+  );
+}
+
+export default App;
+
+  font-size: 1rem;
+  text-align: center;
+`;
+
+// extending a react component
+
+export const StyledButtonMUI = styled(Button)`
+  text-transform: lowercase;
+`;
+
+```
+use it inside the **app.js**
+
+```jsx
+import { HipsterButton } from "./components/default-button/default-button";
+import GlobalStyles from "./global-styles";
+
+function App() {
+  return (
+    <div style={{ padding: "2rem" }}>
+      <GlobalStyles />
+      <HipsterButton>Click me</HipsterButton>
+      <HipsterButton>Click me</HipsterButton>
+      <HipsterButton as="a" href="https://www.google.com">
+       i am a link
+      </HipsterButton>
+      <HipsterButton>Click me</HipsterButton>
+    </div>
+  );
+}
+
+export default App;
+
+
+```
+
+![styled-component-snippets](./documentation/images/as-prop.png)
 ###  Macro and 'CSS' Prop
 ![styled-component-snippets](./documentation/images/)
 ```jsx```
