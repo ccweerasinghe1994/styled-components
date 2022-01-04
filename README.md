@@ -719,14 +719,165 @@ export default Card;
 
 
 ###  Global Styles
-![styled-component-snippets](./documentation/images/)
-```jsx```
+
+let's add global css to the application
+
+
+let's create a **global-styles.jsc** file.
+
+```jsx
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+
+:root {
+  --primary: #645cff;
+  --border:1px solid red;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+`;
+
+export default GlobalStyles;
+
+
+```
+and use it in  **app.js**
+```jsx
+import Card from "./components/card/card";
+import GlobalStyles from "./global-styles";
+
+function App() {
+  return (
+    <div
+      style={{
+        padding: "2rem",
+      }}
+    >
+      <GlobalStyles />
+      <Card />
+    </div>
+  );
+}
+
+export default App;
+
+```
+![styled-component-snippets](./documentation/images/card-component.png)
 ###  Theming
-![styled-component-snippets](./documentation/images/)
+let's create a **theme.js** file.
+```jsx
+export const BaseTheme = {
+  color: "#222",
+  background: "#fff",
+};
+
+export const DarkTheme = {
+  color: "#fff",
+  background: "#222",
+};
+
+
+```
+and use it inside the **app.js**
+
+```jsx
+import GlobalStyles from "./global-styles";
+import styled, { ThemeProvider } from "styled-components";
+import { useState } from "react";
+import { BaseTheme, DarkTheme } from "./theme";
+
+const Container = styled.div`
+  padding: 1rem;
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.background};
+`;
+function App() {
+  const [themeDarkMode, setThemeDarkMode] = useState(false);
+  return (
+    <ThemeProvider theme={themeDarkMode === true ? DarkTheme : BaseTheme}>
+      <GlobalStyles />
+      <Container>
+        <h1>Hello World</h1>
+        <button
+          onClick={() => {
+            setThemeDarkMode(!themeDarkMode);
+          }}
+          className="btn"
+        >
+          {themeDarkMode ? "enable Light Mode" : "enable Dark Mode"}
+        </button>
+      </Container>
+    </ThemeProvider>
+  );
+}
+
+export default App;
+
+```
+light mode
+![styled-component-snippets](./documentation/images/light-mode.png)
+dark mode
+![styled-component-snippets](./documentation/images/dark-mode.png)
 ```jsx```
 ###  Animations
-![styled-component-snippets](./documentation/images/)
-```jsx```
+
+let's create a spinner component.
+```jsx
+import styled, { keyframes } from "styled-components";
+import React from "react";
+
+const spinner = keyframes`
+to{
+    transform: rotate(260deg);
+}
+
+`;
+
+const Wrapper = styled.div`
+  width: 6rem;
+  height: 6rem;
+  border: 9px solid paleturquoise;
+  border-radius: 50%;
+  border-top-color: aquamarine;
+  border-top-width: 5px;
+  animation: ${spinner} 0.4s linear infinite;
+`;
+
+const Loading = () => {
+  return <Wrapper></Wrapper>;
+};
+
+export default Loading;
+
+```
+and use it
+```jsx
+import Loading from "./components/loarding/loarding";
+
+function App() {
+  return (
+    <div style={{ padding: "2rem" }}>
+      <h2 className="title">Animation Example</h2>
+      <Loading />
+    </div>
+  );
+}
+
+export default App;
+
+
+```
+**output**
+![styled-component-snippets](./documentation/images/spinner.png)
+
 ###  'AS' Prop
 ![styled-component-snippets](./documentation/images/)
 ```jsx```
