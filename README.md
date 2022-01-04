@@ -565,8 +565,94 @@ output
 
 
 ###  Custom Border Example 
-![styled-component-snippets](./documentation/images/)
-```jsx```
+with global css we only have to import once.
+with js file we have to import it every place where we need it.
+with these two options css variables are better.
+
+using a util use case.
+this is a custom function to set a border.
+```jsx
+export const setBorder = ({width,type,color})=>{
+    return `${width}px ${type} ${color}`
+}
+```
+let's use it.
+```jsx
+
+import React from "react";
+import styled from "styled-components";
+import { colors,setBorder } from "../../utils";
+const AlternativeTitle = ({ title }) => {
+  return (
+    <Wrapper>
+      <h1>{title}</h1>
+      <div className="underline"></div>
+      <div className="box"></div>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .underline {
+    width: 5rem;
+    height: 0.25rem;
+    background-color: ${colors.primary};
+    margin: 0 auto;
+  }
+  .box {
+    border: ${setBorder({color:'red',type:"solid",width:"1"})};
+    height: 1rem;
+  }
+`;
+
+export default AlternativeTitle;
+
+
+```
+
+as you can see we can customize the border on the fly.
+let's look at a normal css variable.
+
+```jsx
+:root {
+  --primary: #645cff;
+  --border:1px solid red;
+}
+
+```
+
+```jsx
+
+const Wrapper = styled.div`
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .underline {
+    width: 5rem;
+    height: 0.25rem;
+    background-color: var(--primary);
+    margin: 0 auto;
+  }
+
+  .box {
+    border: var(--border);
+    height: 1rem;
+  }
+`;
+
+
+```
+here we can use the same styles but we can't customize it.
+so these is a example of using js files over global css.
+
+![styled-component-snippets](./documentation/images/custom-border.png)
 
 
 ###  Card - Setup
