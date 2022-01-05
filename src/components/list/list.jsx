@@ -22,13 +22,15 @@ const Item = styled.li`
 
 const List = () => {
   return (
-    <ul>
-      {fruits.map((item, index) => (
-        <Item odd={(index + 1) % 2 !== 0} key={index}>
-          {item}
-        </Item>
-      ))}
-    </ul>
+    <>
+      <ul>
+        {fruits.map((item, index) => (
+          <Item odd={(index + 1) % 2 !== 0} key={index}>
+            {item}
+          </Item>
+        ))}
+      </ul>
+    </>
   );
 };
 
