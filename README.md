@@ -907,6 +907,8 @@ export const HipsterButton = styled(DefaultButton)`
   display: inline-block;
   margin-left: 1rem;
   text-decoration: none;import { HipsterButton } from "./components/default-button/default-button";
+  `
+  
 import GlobalStyles from "./global-styles";
 
 function App() {
